@@ -1,16 +1,22 @@
 import json
 import re
 from pathlib import Path
+from urllib.parse import quote
 
 
 ROOT = Path.cwd()
 
 SOURCE_DIRS = [
-    ROOT / "官方",
-    ROOT / "三方",
+    ("三方", ROOT / "三方"),
+    ("官方", ROOT / "官方"),
 ]
 
 OUTPUT_FILE = ROOT / "index.json"
+
+RAW_BASE_URL = (
+    "https://raw.githubusercontent.com/"
+    "huajiaoshu520/venera-cimoc/main/"
+)
 
 
 def get_value(text, key):
@@ -18,6 +24,7 @@ def get_value(text, key):
     从 JS 中读取字符串字段。
 
     支持：
+
     name: "xxx"
     name: 'xxx'
     name: `xxx`
@@ -40,9 +47,9 @@ def get_value(text, key):
     return None
 
 
-def parse_js(file_path):
+def parse_js(file_path, folder_name):
     """
-    解析一个 JS 文件。
+    解析 JS 文件。
     """
 
     text = file_path.read_text(
@@ -56,21 +63,29 @@ def parse_js(file_path):
     description = get_value(text, "description")
     url = get_value(text, "url")
 
-    # 没有 name，使用文件名
+    # 没有 name
     if not name:
         name = file_path.stem
 
-    # 没有 key，使用文件名
+    # 没有 key
     if not key:
         key = file_path.stem
 
-    # 没有 version，默认 1.0.0
+    # 没有 version
     if not version:
         version = "1.0.0"
 
+    # 使用仓库自己的 Raw URL
+    raw_url = (
+        RAW_BASE_URL
+        + quote(folder_name)
+        + "/"
+        + quote(file_path.name)
+    )
+
     item = {
         "name": name,
-        "fileName": file_path.name,
+        "url": raw_url,
         "key": key,
         "version": version,
     }
@@ -79,20 +94,16 @@ def parse_js(file_path):
     if description:
         item["description"] = description
 
-    # 有 url 才添加
-    if url:
-        item["url"] = url
-
     return item
 
 
 def make_unique_name(name, used_names):
     """
-    名称重复：
+    name 重复时自动编号：
 
-    漫画源
-    漫画源 2
-    漫画源 3
+    拷贝漫画
+    拷贝漫画 2
+    拷贝漫画 3
     """
 
     if name not in used_names:
@@ -104,24 +115,6 @@ def make_unique_name(name, used_names):
     return f"{name} {used_names[name]}"
 
 
-def make_unique_key(key, used_keys):
-    """
-    key 重复：
-
-    source
-    source_2
-    source_3
-    """
-
-    if key not in used_keys:
-        used_keys[key] = 1
-        return key
-
-    used_keys[key] += 1
-
-    return f"{key}_{used_keys[key]}"
-
-
 def main():
 
     print("================================")
@@ -131,9 +124,8 @@ def main():
     items = []
 
     used_names = {}
-    used_keys = {}
 
-    for source_dir in SOURCE_DIRS:
+    for folder_name, source_dir in SOURCE_DIRS:
 
         print()
         print(f"扫描目录: {source_dir}")
@@ -150,18 +142,18 @@ def main():
 
         for file_path in js_files:
 
-            print(f"处理: {file_path.name}")
+            print(f"处理: {folder_name}/{file_path.name}")
 
-            item = parse_js(file_path)
+            item = parse_js(
+                file_path,
+                folder_name
+            )
 
+            # 只处理 name 重复
+            # key 即使重复也保持原样
             item["name"] = make_unique_name(
                 item["name"],
                 used_names
-            )
-
-            item["key"] = make_unique_key(
-                item["key"],
-                used_keys
             )
 
             items.append(item)
@@ -179,7 +171,7 @@ def main():
     print()
     print("================================")
     print("生成完成")
-    print(f"JS 数量: {len(items)}")
+    print(f"共 {len(items)} 个 JS")
     print(f"输出文件: {OUTPUT_FILE}")
     print("================================")
 
