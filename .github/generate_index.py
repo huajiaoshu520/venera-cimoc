@@ -13,40 +13,22 @@ SOURCE_DIRS = [
 OUTPUT_FILE = ROOT / "index.json"
 
 
-def get_string(text, key):
-    """
-    从 JS 中读取：
-
-    name: "xxx"
-    key: "xxx"
-    version: "1.0.0"
-    description: "xxx"
-    url: "https://xxx"
-    """
-
-    pattern = rf"""["']?{re.escape(key)}["']?\s*:\s*["'](.*?)["']"""
-
-    match = re.search(pattern, text, re.S)
-
-    if match:
-        return match.group(1).strip()
-
-    return None
-
-
 def get_value(text, key):
     """
-    同时支持：
+    从 JS 中读取字符串字段。
 
-    key: "xxx"
-    key: 'xxx'
-    key: `xxx`
+    支持：
+    name: "xxx"
+    name: 'xxx'
+    name: `xxx`
     """
 
+    key_pattern = re.escape(key)
+
     patterns = [
-        rf"""["']?{re.escape(key)}["']?\s*:\s*"([^"]*)"""",
-        rf"""["']?{re.escape(key)}["']?\s*:\s*'([^']*)'""",
-        rf"""["']?{re.escape(key)}["']?\s*:\s*`([^`]*)`""",
+        r'["\']?' + key_pattern + r'["\']?\s*:\s*"([^"]*)"',
+        r'["\']?' + key_pattern + r'["\']?\s*:\s*\'([^\']*)\'',
+        r'["\']?' + key_pattern + r'["\']?\s*:\s*`([^`]*)`',
     ]
 
     for pattern in patterns:
@@ -59,6 +41,9 @@ def get_value(text, key):
 
 
 def parse_js(file_path):
+    """
+    解析一个 JS 文件。
+    """
 
     text = file_path.read_text(
         encoding="utf-8",
@@ -71,15 +56,15 @@ def parse_js(file_path):
     description = get_value(text, "description")
     url = get_value(text, "url")
 
-    # 没有 name 就使用文件名
+    # 没有 name，使用文件名
     if not name:
         name = file_path.stem
 
-    # 没有 key 就使用文件名
+    # 没有 key，使用文件名
     if not key:
         key = file_path.stem
 
-    # 没有 version 就使用 1.0.0
+    # 没有 version，默认 1.0.0
     if not version:
         version = "1.0.0"
 
@@ -90,35 +75,51 @@ def parse_js(file_path):
         "version": version,
     }
 
+    # 有 description 才添加
     if description:
         item["description"] = description
 
+    # 有 url 才添加
     if url:
         item["url"] = url
 
     return item
 
 
-def unique_name(name, used):
+def make_unique_name(name, used_names):
+    """
+    名称重复：
 
-    if name not in used:
-        used[name] = 1
+    漫画源
+    漫画源 2
+    漫画源 3
+    """
+
+    if name not in used_names:
+        used_names[name] = 1
         return name
 
-    used[name] += 1
+    used_names[name] += 1
 
-    return f"{name} {used[name]}"
+    return f"{name} {used_names[name]}"
 
 
-def unique_key(key, used):
+def make_unique_key(key, used_keys):
+    """
+    key 重复：
 
-    if key not in used:
-        used[key] = 1
+    source
+    source_2
+    source_3
+    """
+
+    if key not in used_keys:
+        used_keys[key] = 1
         return key
 
-    used[key] += 1
+    used_keys[key] += 1
 
-    return f"{key}_{used[key]}"
+    return f"{key}_{used_keys[key]}"
 
 
 def main():
@@ -135,35 +136,37 @@ def main():
     for source_dir in SOURCE_DIRS:
 
         print()
-        print(f"扫描目录：{source_dir}")
+        print(f"扫描目录: {source_dir}")
 
         if not source_dir.exists():
             print("目录不存在，跳过")
             continue
 
-        files = sorted(source_dir.glob("*.js"))
+        js_files = sorted(
+            source_dir.glob("*.js")
+        )
 
-        print(f"发现 {len(files)} 个 JS 文件")
+        print(f"发现 {len(js_files)} 个 JS 文件")
 
-        for file_path in files:
+        for file_path in js_files:
 
-            print(f"  -> {file_path}")
+            print(f"处理: {file_path.name}")
 
             item = parse_js(file_path)
 
-            item["name"] = unique_name(
+            item["name"] = make_unique_name(
                 item["name"],
                 used_names
             )
 
-            item["key"] = unique_key(
+            item["key"] = make_unique_key(
                 item["key"],
                 used_keys
             )
 
             items.append(item)
 
-    # 确保一定生成文件
+    # 生成 index.json
     OUTPUT_FILE.write_text(
         json.dumps(
             items,
@@ -175,8 +178,9 @@ def main():
 
     print()
     print("================================")
-    print(f"生成完成，共 {len(items)} 个配置")
-    print(f"文件：{OUTPUT_FILE}")
+    print("生成完成")
+    print(f"JS 数量: {len(items)}")
+    print(f"输出文件: {OUTPUT_FILE}")
     print("================================")
 
 
