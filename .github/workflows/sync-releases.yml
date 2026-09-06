@@ -1,0 +1,209 @@
+name: 同步 Venera Releases
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */6 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  sync-releases:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 获取最新 Release 信息
+        id: releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+
+          NEXT_JSON=$(gh api repos/CyrilPeng/Venera-Next/releases/latest)
+          VENERA_JSON=$(gh api repos/venera-app/venera/releases/latest)
+
+          NEXT_TAG=$(echo "$NEXT_JSON" | jq -r '.tag_name')
+          VENERA_TAG=$(echo "$VENERA_JSON" | jq -r '.tag_name')
+
+          NEXT_ID=$(echo "$NEXT_JSON" | jq -r '.id')
+          VENERA_ID=$(echo "$VENERA_JSON" | jq -r '.id')
+
+          echo "NEXT_TAG=$NEXT_TAG" >> "$GITHUB_OUTPUT"
+          echo "VENERA_TAG=$VENERA_TAG" >> "$GITHUB_OUTPUT"
+          echo "NEXT_ID=$NEXT_ID" >> "$GITHUB_OUTPUT"
+          echo "VENERA_ID=$VENERA_ID" >> "$GITHUB_OUTPUT"
+
+          echo "Venera-Next 最新版本: $NEXT_TAG"
+          echo "Venera 最新版本: $VENERA_TAG"
+
+      - name: 检查是否需要更新
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NEXT_TAG: ${{ steps.releases.outputs.NEXT_TAG }}
+          VENERA_TAG: ${{ steps.releases.outputs.VENERA_TAG }}
+        run: |
+          set -e
+
+          if ! gh release view latest --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "需要创建 Release"
+            echo "update=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          CURRENT_BODY=$(gh release view latest \
+            --repo "$GITHUB_REPOSITORY" \
+            --json body \
+            --jq '.body')
+
+          if echo "$CURRENT_BODY" | grep -Fq "Venera-Next: $NEXT_TAG" \
+             && echo "$CURRENT_BODY" | grep -Fq "Venera: $VENERA_TAG"; then
+            echo "版本没有变化，不需要更新"
+            echo "update=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "检测到新版本，需要更新"
+            echo "update=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: 下载两个项目最新 Release
+        if: steps.check.outputs.update == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NEXT_TAG: ${{ steps.releases.outputs.NEXT_TAG }}
+          VENERA_TAG: ${{ steps.releases.outputs.VENERA_TAG }}
+        run: |
+          set -e
+
+          mkdir -p release-assets
+
+          echo "下载 Venera-Next $NEXT_TAG"
+
+          gh release download "$NEXT_TAG" \
+            --repo CyrilPeng/Venera-Next \
+            --dir release-assets \
+            --pattern "*" \
+            --clobber
+
+          mkdir -p release-assets/venera-next
+
+          find release-assets -maxdepth 1 -type f \
+            -exec mv {} release-assets/venera-next/ \;
+
+          echo "下载 Venera $VENERA_TAG"
+
+          gh release download "$VENERA_TAG" \
+            --repo venera-app/venera \
+            --dir release-assets \
+            --pattern "*" \
+            --clobber
+
+          mkdir -p release-assets/venera
+
+          find release-assets -maxdepth 1 -type f \
+            -exec mv {} release-assets/venera/ \;
+
+      - name: 给文件添加项目前缀
+        if: steps.check.outputs.update == 'true'
+        run: |
+          set -e
+
+          mkdir -p final-assets
+
+          # Venera-Next
+          if [ -d "release-assets/venera-next" ]; then
+            for file in release-assets/venera-next/*; do
+              [ -f "$file" ] || continue
+
+              name=$(basename "$file")
+
+              cp "$file" \
+                "final-assets/VeneraNext_${name}"
+            done
+          fi
+
+          # Venera
+          if [ -d "release-assets/venera" ]; then
+            for file in release-assets/venera/*; do
+              [ -f "$file" ] || continue
+
+              name=$(basename "$file")
+
+              cp "$file" \
+                "final-assets/Venera_${name}"
+            done
+          fi
+
+          echo "最终附件："
+          ls -lh final-assets
+
+      - name: 删除旧的 Release
+        if: steps.check.outputs.update == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+
+          if gh release view latest \
+            --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+
+            echo "删除旧 Release: latest"
+
+            gh release delete latest \
+              --repo "$GITHUB_REPOSITORY" \
+              --yes \
+              --cleanup-tag
+          else
+            echo "没有旧 Release"
+          fi
+
+      - name: 创建新的 Release
+        if: steps.check.outputs.update == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NEXT_TAG: ${{ steps.releases.outputs.NEXT_TAG }}
+          VENERA_TAG: ${{ steps.releases.outputs.VENERA_TAG }}
+        run: |
+          set -e
+
+          cat > release-notes.md <<EOF
+          # Venera 最新版本
+
+          此 Release 由 GitHub Actions 自动同步。
+
+          ## Venera-Next
+
+          Venera-Next: $NEXT_TAG
+
+          来源：
+          https://github.com/CyrilPeng/Venera-Next/releases/tag/$NEXT_TAG
+
+          ## Venera
+
+          Venera: $VENERA_TAG
+
+          来源：
+          https://github.com/venera-app/venera/releases/tag/$VENERA_TAG
+
+          ## 说明
+
+          本仓库仅作为 Release 文件镜像使用。
+
+          上游版本更新后，本 Release 会自动删除旧版本并重新同步。
+          EOF
+
+          gh release create latest \
+            final-assets/* \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "Venera 最新版" \
+            --notes-file release-notes.md
+
+      - name: 完成
+        if: steps.check.outputs.update == 'true'
+        run: |
+          echo "======================================"
+          echo "Release 同步完成"
+          echo "======================================"
+          echo "Venera-Next: ${{ steps.releases.outputs.NEXT_TAG }}"
+          echo "Venera:      ${{ steps.releases.outputs.VENERA_TAG }}"
+          echo "======================================"
