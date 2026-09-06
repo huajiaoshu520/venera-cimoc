@@ -12,8 +12,8 @@ THIRD_PARTY_DIR = ROOT / "三方"
 OUTPUT_FILE = ROOT / "index.json"
 
 RAW_BASE_URL = (
-    "https://raw.githubusercontent.com/"
-    "huajiaoshu520/venera-cimoc/main/"
+    "https://cdn.jsdelivr.net/gh/"
+    "huajiaoshu520/venera-cimoc@main/"
 )
 
 OFFICIAL_INDEX_URL = (
