@@ -1,0 +1,47 @@
+name: 自动生成 index.json
+
+on:
+  workflow_dispatch:
+
+  # 每天凌晨 3:30（北京时间）自动生成
+  schedule:
+    - cron: "30 19 * * *"
+
+  # 当官方 / 三方目录发生变化时自动生成
+  push:
+    paths:
+      - "官方/**"
+      - "三方/**"
+
+permissions:
+  contents: write
+
+jobs:
+  generate-index:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Generate index.json
+        run: python .github/generate_index.py
+
+      - name: Commit and Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add index.json
+
+          if git diff --cached --quiet; then
+            echo "index.json 没有变化，不需要提交。"
+          else
+            git commit -m "chore: 自动更新 index.json"
+            git push
+          fi
