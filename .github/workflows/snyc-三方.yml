@@ -1,0 +1,55 @@
+name: 同步三方漫画配置
+
+on:
+  # 手动运行
+  workflow_dispatch:
+
+  # 每天凌晨 3 点（北京时间）自动运行
+  schedule:
+    - cron: "0 19 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 拉取自己的仓库
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 拉取第三方配置仓库
+      - name: Clone venera-config
+        run: |
+          git clone --depth 1 https://github.com/meaninglesslyy/venera-config.git /tmp/venera-config
+
+      # 同步“正经漫画”目录
+      - name: Sync 正经漫画
+        run: |
+          mkdir -p "三方"
+
+          # 清理旧文件，确保目标目录与源目录保持一致
+          find "三方" -maxdepth 1 -type f -delete
+
+          # 复制正经漫画目录中的全部文件
+          cp -a /tmp/venera-config/正经漫画/. "三方/"
+
+          echo "同步完成："
+          ls -lah "三方"
+
+      # 提交并推送
+      - name: Commit and Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add "三方"
+
+          if git diff --cached --quiet; then
+            echo "没有文件发生变化，不需要提交。"
+          else
+            git commit -m "chore: 同步三方漫画配置"
+            git push
+          fi
