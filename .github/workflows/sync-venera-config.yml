@@ -1,0 +1,56 @@
+name: 同步官方 JS 配置
+
+on:
+  # 手动运行
+  workflow_dispatch:
+
+  # 每天凌晨 3 点运行
+  schedule:
+    - cron: "0 19 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 拉取自己的仓库
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 拉取官方配置仓库
+      - name: Clone venera-configs
+        run: |
+          git clone --depth 1 https://github.com/venera-app/venera-configs.git /tmp/venera-configs
+
+      # 同步 JS 文件
+      - name: Sync JS files
+        run: |
+          mkdir -p "官方"
+
+          # 删除官方目录中已经从源仓库删除的 JS
+          find "官方" -maxdepth 1 -type f -name "*.js" -delete
+
+          # 复制官方仓库根目录下的所有 JS
+          find /tmp/venera-configs -maxdepth 1 -type f -name "*.js" \
+            -exec cp {} "官方/" \;
+
+          echo "同步完成，当前文件："
+          ls -lah "官方"
+
+      # 提交并推送
+      - name: Commit and Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add "官方"
+
+          if git diff --cached --quiet; then
+            echo "没有文件发生变化，不需要提交。"
+          else
+            git commit -m "chore: 同步官方 JS 配置"
+            git push
+          fi
