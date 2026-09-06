@@ -3,11 +3,9 @@ name: 自动生成 index.json
 on:
   workflow_dispatch:
 
-  # 每天凌晨 3:30（北京时间）自动生成
   schedule:
     - cron: "30 19 * * *"
 
-  # 当官方 / 三方目录发生变化时自动生成
   push:
     paths:
       - "官方/**"
@@ -30,7 +28,17 @@ jobs:
           python-version: "3.x"
 
       - name: Generate index.json
-        run: python .github/generate_index.py
+        run: |
+          python .github/generate_index.py
+
+          echo "检查 index.json..."
+          if [ ! -f "index.json" ]; then
+            echo "错误：index.json 没有生成！"
+            exit 1
+          fi
+
+          echo "index.json 生成成功："
+          cat index.json
 
       - name: Commit and Push
         run: |
