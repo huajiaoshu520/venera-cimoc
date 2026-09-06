@@ -1,253 +1,229 @@
 [
   {
-    "name": "地区",
+    "name": "51漫画",
     "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E4%B8%89%E6%96%B9/51manga.js",
     "key": "51manga",
     "version": "1.0.0"
   },
   {
-    "name": "night",
+    "name": "嗶哩漫畫",
     "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E4%B8%89%E6%96%B9/bilimanga.js",
-    "key": "monthvisit",
-    "version": "1.0.0"
+    "key": "bilimanga",
+    "version": "1.2.0"
   },
   {
-    "name": "进度",
+    "name": "如漫画",
     "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E4%B8%89%E6%96%B9/rumanhua.js",
     "key": "rumanhua",
     "version": "1.0.0"
   },
   {
-    "name": "分类",
+    "name": "zero搬运网",
     "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E4%B8%89%E6%96%B9/zerobyw33.js",
     "key": "zerobyw33",
-    "version": "1.0.0"
+    "version": "1.2.0"
   },
   {
-    "name": "Theme",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/_template_.js",
-    "key": "_template_",
-    "version": "1.0.0"
+    "name": "拷贝漫画",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/copy_manga.js",
+    "key": "copy_manga",
+    "version": "1.4.2"
   },
   {
-    "name": "_venera_",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/_venera_.js",
-    "key": "_venera_",
-    "version": "1.0.0"
+    "name": "拷贝漫画(多账号)",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/copy_manga_multi_accounts.js",
+    "key": "copy_manga",
+    "version": "1.4.1"
   },
   {
-    "name": "分类 2",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/baihehui.js",
-    "key": "baihehui",
-    "version": "1.0.0",
-    "description": "更新于: ${updateTime}"
+    "name": "Komiic",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/komiic.js",
+    "key": "Komiic",
+    "version": "1.0.3"
   },
   {
-    "name": "TSID",
+    "name": "包子漫画",
     "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/baozi.js",
     "key": "baozi",
+    "version": "1.1.6"
+  },
+  {
+    "name": "Picacg",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/picacg.js",
+    "key": "picacg",
+    "version": "1.0.6"
+  },
+  {
+    "name": "nhentai",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/nhentai.js",
+    "key": "nhentai",
+    "version": "1.1.0"
+  },
+  {
+    "name": "紳士漫畫",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/wnacg.js",
+    "key": "wnacg",
+    "version": "1.0.5",
+    "description": "紳士漫畫漫畫源, 不能使用時請嘗試更換URL"
+  },
+  {
+    "name": "ehentai",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/ehentai.js",
+    "key": "ehentai",
+    "version": "1.1.8"
+  },
+  {
+    "name": "禁漫天堂",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/jm.js",
+    "key": "jm",
+    "version": "1.4.0",
+    "description": "禁漫天堂漫畫源, 不能使用時請嘗試切換分流"
+  },
+  {
+    "name": "MangaDex",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/manga_dex.js",
+    "key": "manga_dex",
+    "version": "1.2.0",
+    "description": "Forum login and comments are supported."
+  },
+  {
+    "name": "爱看漫",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/ikmmh.js",
+    "key": "ikmmh",
+    "version": "1.0.5"
+  },
+  {
+    "name": "少年ジャンプ＋",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/shonen_jump_plus.js",
+    "key": "shonen_jump_plus",
+    "version": "1.1.1"
+  },
+  {
+    "name": "hitomi.la",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/hitomi.js",
+    "key": "hitomi",
+    "version": "1.1.2"
+  },
+  {
+    "name": "comick",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/comick.js",
+    "key": "comick",
+    "version": "1.2.0"
+  },
+  {
+    "name": "优酷漫画",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/ykmh.js",
+    "key": "ykmh",
+    "version": "1.0.0"
+  },
+  {
+    "name": "再漫画",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/zaimanhua.js",
+    "key": "zaimanhua",
+    "version": "1.0.2"
+  },
+  {
+    "name": "漫画柜",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/manhuagui.js",
+    "key": "ManHuaGui",
+    "version": "1.2.1"
+  },
+  {
+    "name": "漫蛙吧",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/manwaba.js",
+    "key": "manwaba",
+    "version": "1.0.2"
+  },
+  {
+    "name": "Lanraragi",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/lanraragi.js",
+    "key": "lanraragi",
+    "version": "1.1.0"
+  },
+  {
+    "name": "Komga",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/komga.js",
+    "key": "komga",
+    "version": "1.0.0"
+  },
+  {
+    "name": "カドコミ",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/comic_walker.js",
+    "key": "comic_walker",
+    "version": "1.0.1"
+  },
+  {
+    "name": "漫画1234",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/mh1234.js",
+    "key": "mh1234",
     "version": "1.0.0"
   },
   {
     "name": "CCC追漫台",
     "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/ccc.js",
     "key": "ccc",
-    "version": "1.0.0"
+    "version": "1.0.1"
   },
   {
-    "name": "comic_walker",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/comic_walker.js",
-    "key": "comic_walker",
-    "version": "+ version);\n      }\n      var key_part = drm_hash.slice(2);\n      if (key_part.length < 16) {\n        throw new Error("
-  },
-  {
-    "name": "类型",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/comick.js",
-    "key": "comick",
-    "version": "1.0.0",
-    "description": "${descriptionPrefix}${book.last_chapter || \"未知\"}"
-  },
-  {
-    "name": "拷贝漫画",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/copy_manga.js",
-    "key": "copy_manga",
-    "version": "3.0.6",
-    "description": "${sort} ${rise_sort > 0 ? '▲' : rise_sort < 0 ? '▽' : '-'}\\n"
-  },
-  {
-    "name": "拷贝漫画M",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/copy_manga_multi_accounts.js",
-    "key": "copy_manga_multi_accounts",
-    "version": "3.0.6",
-    "description": "仅用于收藏合并。主账号请通过APP标准登录入口登录"
-  },
-  {
-    "name": "ehentai",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/ehentai.js",
-    "key": "ehentai",
-    "version": "1.0.0",
-    "description": "Size: ${size}, Cost: ${cost}"
-  },
-  {
-    "name": "类型 2",
+    "name": "GoDa漫画",
     "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/goda.js",
     "key": "goda",
-    "version": "1.0.0"
+    "version": "1.2.1"
   },
   {
-    "name": "最近更新",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/happy.js",
-    "key": "happy",
-    "version": "1.0.0"
-  },
-  {
-    "name": "热门TAG",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/hcomic.js",
-    "key": "hcomic",
-    "version": "1.0.0"
-  },
-  {
-    "name": "语言",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/hitomi.js",
-    "key": "added",
-    "version": "1.0.0"
-  },
-  {
-    "name": "免费漫画排行",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/hot_manga.js",
-    "key": "hot_manga",
-    "version": "2024.04.28",
-    "description": "${sort} ${rise_sort > 0 ? '▲' : rise_sort < 0 ? '▽' : '-'}\\n"
-  },
-  {
-    "name": "更新",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/ikmmh.js",
-    "key": "ikmmh",
-    "version": "1.0.0"
-  },
-  {
-    "name": "分類",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/jcomic.js",
-    "key": "jcomic",
-    "version": "1.0.0"
-  },
-  {
-    "name": "每週必看",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/jm.js",
-    "key": "jm",
-    "version": "1.0.0"
-  },
-  {
-    "name": "kavita",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/kavita.js",
-    "key": "kavita",
-    "version": "1.0.0"
-  },
-  {
-    "name": "常用",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/komga.js",
-    "key": "komga",
-    "version": "1.0.0"
-  },
-  {
-    "name": "主题",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/komiic.js",
-    "key": "komiic",
-    "version": "1.0.0"
-  },
-  {
-    "name": "ALL",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/lanraragi.js",
-    "key": "lanraragi",
-    "version": "1.0.0",
-    "description": "页数:"
-  },
-  {
-    "name": "Tags",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/manga_dex.js",
-    "key": "manga_dex",
-    "version": "1.0.0"
-  },
-  {
-    "name": "类型 3",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/manhuagui.js",
-    "key": "manhuagui",
-    "version": "1.0.0"
-  },
-  {
-    "name": "类型 4",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/manhuaren.js",
-    "key": "manhuaren",
-    "version": "1.0.0"
-  },
-  {
-    "name": "类型 5",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/manwaba.js",
-    "key": "manwaba",
-    "version": "1.0.0"
-  },
-  {
-    "name": "题材",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/mh1234.js",
-    "key": "mh1234",
-    "version": "1.0.0"
-  },
-  {
-    "name": "类型 6",
+    "name": "18漫画",
     "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/mh18.js",
     "key": "mh18",
     "version": "1.0.0"
   },
   {
-    "name": "推荐",
+    "name": "漫小肆",
     "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/mxs.js",
     "key": "mxs",
-    "version": "1.0.0",
-    "description": "热度: 🔥${clickCount}"
+    "version": "1.0.0"
   },
   {
-    "name": "cf_clearance",
+    "name": "漫画人",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/manhuaren.js",
+    "key": "manhuaren",
+    "version": "1.0.0"
+  },
+  {
+    "name": "H-Comic",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/hcomic.js",
+    "key": "hcomic",
+    "version": "1.0.0"
+  },
+  {
+    "name": "jcomic.net",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/jcomic.js",
+    "key": "jcomic",
+    "version": "1.0.0"
+  },
+  {
+    "name": "热辣漫画",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/hot_manga.js",
+    "key": "hot_manga",
+    "version": "1.0.0"
+  },
+  {
+    "name": "Kavita",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/kavita.js",
+    "key": "kavita",
+    "version": "1.0.0"
+  },
+  {
+    "name": "嗨皮漫画",
+    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/happy.js",
+    "key": "happy",
+    "version": "1.0.0",
+    "description": "中国大陆及日韩IP无法访问，遇到403可以尝试切换其他地区网络"
+  },
+  {
+    "name": "MYCOMIC",
     "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/mycomic.js",
     "key": "mycomic",
-    "version": "1.0.0"
-  },
-  {
-    "name": "Language",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/nhentai.js",
-    "key": "nhentai",
-    "version": "1.0.0"
-  },
-  {
-    "name": "主题 2",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/picacg.js",
-    "key": "C69BAF41DA5ABD1FFEDC6D2FEA56B",
-    "version": "2.2.1.3.3.4",
-    "description": "${comic.totalLikes ?? comic.likesCount} likes"
-  },
-  {
-    "name": "shonen_jump_plus",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/shonen_jump_plus.js",
-    "key": "shonen_jump_plus",
-    "version": "1.0.0",
-    "description": "Ranking: ${item.rank} · Views: ${\n              item.viewCount || \"Unknown\"\n            }"
-  },
-  {
-    "name": "最新",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/wnacg.js",
-    "key": "wnacg",
-    "version": "1.0.0"
-  },
-  {
-    "name": "主题 3",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/ykmh.js",
-    "key": "ykmh",
-    "version": "1.0.0",
-    "description": "热门推荐漫画"
-  },
-  {
-    "name": "排行榜",
-    "url": "https://raw.githubusercontent.com/huajiaoshu520/venera-cimoc/main/%E5%AE%98%E6%96%B9/zaimanhua.js",
-    "key": "zaimanhua",
-    "version": "1.0.0"
+    "version": "1.1.0",
+    "description": "mycomic.com漫画源, 遇到Cloudflare验证请在源设置中登录"
   }
 ]
