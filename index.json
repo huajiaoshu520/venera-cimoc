@@ -1,0 +1,262 @@
+[
+  {
+    "name": "Theme",
+    "fileName": "_template_.js",
+    "key": "_template_",
+    "version": "1.0.0"
+  },
+  {
+    "name": "_venera_",
+    "fileName": "_venera_.js",
+    "key": "_venera_",
+    "version": "1.0.0"
+  },
+  {
+    "name": "分类",
+    "fileName": "baihehui.js",
+    "key": "baihehui",
+    "version": "1.0.0",
+    "description": "更新于: ${updateTime}"
+  },
+  {
+    "name": "TSID",
+    "fileName": "baozi.js",
+    "key": "baozi",
+    "version": "1.0.0"
+  },
+  {
+    "name": "CCC追漫台",
+    "fileName": "ccc.js",
+    "key": "ccc",
+    "version": "1.0.0",
+    "url": "https://www.creative-comic.tw/zh/login"
+  },
+  {
+    "name": "comic_walker",
+    "fileName": "comic_walker.js",
+    "key": "comic_walker",
+    "version": "+ version);\n      }\n      var key_part = drm_hash.slice(2);\n      if (key_part.length < 16) {\n        throw new Error("
+  },
+  {
+    "name": "类型",
+    "fileName": "comick.js",
+    "key": "comick",
+    "version": "1.0.0",
+    "description": "${descriptionPrefix}${book.last_chapter || \"未知\"}"
+  },
+  {
+    "name": "拷贝漫画",
+    "fileName": "copy_manga.js",
+    "key": "copy_manga",
+    "version": "3.0.6",
+    "description": "${sort} ${rise_sort > 0 ? '▲' : rise_sort < 0 ? '▽' : '-'}\\n"
+  },
+  {
+    "name": "拷贝漫画M",
+    "fileName": "copy_manga_multi_accounts.js",
+    "key": "copy_manga_multi_accounts",
+    "version": "3.0.6",
+    "description": "仅用于收藏合并。主账号请通过APP标准登录入口登录"
+  },
+  {
+    "name": "ehentai",
+    "fileName": "ehentai.js",
+    "key": "ehentai",
+    "version": "1.0.0",
+    "description": "Size: ${size}, Cost: ${cost}",
+    "url": "https://forums.e-hentai.org/index.php?act=Login&CODE=00"
+  },
+  {
+    "name": "类型 2",
+    "fileName": "goda.js",
+    "key": "goda",
+    "version": "1.0.0",
+    "url": "..."
+  },
+  {
+    "name": "最近更新",
+    "fileName": "happy.js",
+    "key": "happy",
+    "version": "1.0.0"
+  },
+  {
+    "name": "热门TAG",
+    "fileName": "hcomic.js",
+    "key": "hcomic",
+    "version": "1.0.0"
+  },
+  {
+    "name": "语言",
+    "fileName": "hitomi.js",
+    "key": "added",
+    "version": "1.0.0",
+    "url": "https://hitomi.la"
+  },
+  {
+    "name": "免费漫画排行",
+    "fileName": "hot_manga.js",
+    "key": "hot_manga",
+    "version": "2024.04.28",
+    "description": "${sort} ${rise_sort > 0 ? '▲' : rise_sort < 0 ? '▽' : '-'}\\n"
+  },
+  {
+    "name": "更新",
+    "fileName": "ikmmh.js",
+    "key": "ikmmh",
+    "version": "1.0.0"
+  },
+  {
+    "name": "分類",
+    "fileName": "jcomic.js",
+    "key": "jcomic",
+    "version": "1.0.0"
+  },
+  {
+    "name": "每週必看",
+    "fileName": "jm.js",
+    "key": "jm",
+    "version": "1.0.0"
+  },
+  {
+    "name": "kavita",
+    "fileName": "kavita.js",
+    "key": "kavita",
+    "version": "1.0.0"
+  },
+  {
+    "name": "常用",
+    "fileName": "komga.js",
+    "key": "komga",
+    "version": "1.0.0"
+  },
+  {
+    "name": "主题",
+    "fileName": "komiic.js",
+    "key": "komiic",
+    "version": "1.0.0"
+  },
+  {
+    "name": "ALL",
+    "fileName": "lanraragi.js",
+    "key": "lanraragi",
+    "version": "1.0.0",
+    "description": "页数:"
+  },
+  {
+    "name": "Tags",
+    "fileName": "manga_dex.js",
+    "key": "manga_dex",
+    "version": "1.0.0",
+    "url": "https://forums.mangadex.org/login/"
+  },
+  {
+    "name": "类型 3",
+    "fileName": "manhuagui.js",
+    "key": "manhuagui",
+    "version": "1.0.0"
+  },
+  {
+    "name": "类型 4",
+    "fileName": "manhuaren.js",
+    "key": "manhuaren",
+    "version": "1.0.0"
+  },
+  {
+    "name": "类型 5",
+    "fileName": "manwaba.js",
+    "key": "manwaba",
+    "version": "1.0.0"
+  },
+  {
+    "name": "题材",
+    "fileName": "mh1234.js",
+    "key": "mh1234",
+    "version": "1.0.0"
+  },
+  {
+    "name": "类型 6",
+    "fileName": "mh18.js",
+    "key": "mh18",
+    "version": "1.0.0"
+  },
+  {
+    "name": "推荐",
+    "fileName": "mxs.js",
+    "key": "mxs",
+    "version": "1.0.0",
+    "description": "热度: 🔥${clickCount}"
+  },
+  {
+    "name": "cf_clearance",
+    "fileName": "mycomic.js",
+    "key": "mycomic",
+    "version": "1.0.0",
+    "url": "https://mycomic.com/cn"
+  },
+  {
+    "name": "Language",
+    "fileName": "nhentai.js",
+    "key": "nhentai",
+    "version": "1.0.0",
+    "url": "https://nhentai.net/login"
+  },
+  {
+    "name": "主题 2",
+    "fileName": "picacg.js",
+    "key": "C69BAF41DA5ABD1FFEDC6D2FEA56B",
+    "version": "2.2.1.3.3.4",
+    "description": "${comic.totalLikes ?? comic.likesCount} likes"
+  },
+  {
+    "name": "shonen_jump_plus",
+    "fileName": "shonen_jump_plus.js",
+    "key": "shonen_jump_plus",
+    "version": "1.0.0",
+    "description": "Ranking: ${item.rank} · Views: ${\n              item.viewCount || \"Unknown\"\n            }",
+    "url": "https://shonenjumpplus.com/app/episode/${seriesData.publisherId}"
+  },
+  {
+    "name": "最新",
+    "fileName": "wnacg.js",
+    "key": "wnacg",
+    "version": "1.0.0"
+  },
+  {
+    "name": "主题 3",
+    "fileName": "ykmh.js",
+    "key": "ykmh",
+    "version": "1.0.0",
+    "description": "热门推荐漫画"
+  },
+  {
+    "name": "排行榜",
+    "fileName": "zaimanhua.js",
+    "key": "zaimanhua",
+    "version": "1.0.0"
+  },
+  {
+    "name": "地区",
+    "fileName": "51manga.js",
+    "key": "51manga",
+    "version": "1.0.0"
+  },
+  {
+    "name": "night",
+    "fileName": "bilimanga.js",
+    "key": "monthvisit",
+    "version": "1.0.0",
+    "url": "https://www.bilimanga.net/login.php"
+  },
+  {
+    "name": "进度",
+    "fileName": "rumanhua.js",
+    "key": "rumanhua",
+    "version": "1.0.0"
+  },
+  {
+    "name": "分类 2",
+    "fileName": "zerobyw33.js",
+    "key": "zerobyw33",
+    "version": "1.0.0"
+  }
+]
