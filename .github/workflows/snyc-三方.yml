@@ -34,7 +34,7 @@ jobs:
           find "三方" -maxdepth 1 -type f -delete
 
           # 复制正经漫画目录中的全部文件
-          cp -a /tmp/venera-config/正经漫画/. "三方/"
+          cp -a /tmp/venera-config/normal_comic/. "三方/"
 
           echo "同步完成："
           ls -lah "三方"
