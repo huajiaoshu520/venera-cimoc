@@ -6,7 +6,7 @@ on:
 
   # 每天凌晨 3 点（北京时间）自动运行
   schedule:
-    - cron: "0 19 * * *"
+    - cron: '57 22 * * *'
 
 permissions:
   contents: write
